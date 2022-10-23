@@ -26,26 +26,47 @@ def process_frame(frame):
 
 
     #Part 2
+    # queue = []
+    # cluster_boxes_data = get_bbox_info(frame, box_info)
+    # for bbox in cluster_boxes_data:
+    #     x_upper_left = bbox[0]
+    #     y_upper_left = bbox[1]
+    #     x_bottom_right = bbox[2]
+    #     y_bottom_right = bbox[3]
+    #
+    #     area = (x_upper_left - x_bottom_right)*(y_upper_left - y_bottom_right)
+    #     queue.append((area, bbox))
+    #
+    #
+    # queue = sorted(queue)
+    # print(queue)
+    # tasks = []
+    # priority = 0
+    # for _, bbox in queue:
+    #     tasks.append(TaskEntity(frame.path,coord = bbox[:4], priority = priority, depth = bbox[4]))
+    #     priority += 1
+    #
+    # return tasks
+
+    #Part 3
     queue = []
 
     cluster_boxes_data = get_bbox_info(frame, box_info)
     for bbox in cluster_boxes_data:
-        x_upper_left = bbox[0]
-        y_upper_left = bbox[1]
-        x_bottom_right = bbox[2]
-        y_bottom_right = bbox[3]
-
-        area = (x_upper_left - x_bottom_right)*(y_upper_left - y_bottom_right)
-        queue.append((area, bbox))
+        depth = bbox[4]
+        queue.append((depth, bbox))
 
 
     queue = sorted(queue)
+    print(queue)
     tasks = []
     priority = 0
     for _, bbox in queue:
-        tasks.append(TaskEntity(frame.path,coord = bbox[:4], priority = priority,depth = bbox[4]))
+        tasks.append(TaskEntity(frame.path,coord = bbox[:4], priority = priority, depth = bbox[4]))
         priority += 1
-
     return tasks
+
+
+
 
     
