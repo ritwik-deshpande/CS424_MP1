@@ -71,7 +71,7 @@ class Scheduler:
 
                     self.history.append(task)
                     # you can comment out the following line to skip yolo for shorter program runtime
-                    self.run_yolo(task)
+                    # self.run_yolo(task)
             
             self.time = self.time + 1
         

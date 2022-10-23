@@ -18,7 +18,6 @@ import numpy as np
 import core.utils as utils
 import tensorflow as tf
 from core.yolov3 import YOLOv3, decode
-from PIL import Image
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 
@@ -56,10 +55,10 @@ bboxes = utils.nms(bboxes, 0.45, method='nms')
 image = utils.draw_bbox(original_image, bboxes)
 image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
-# cv2.imwrite("./kite_pred.jpg", image)
+cv2.imwrite("./kite_pred.jpg", image)
 
-cv2.imshow("predicted image", image)
-# Load and hold the image
-cv2.waitKey(0)
-# To close the window press any key
-cv2.destroyAllWindows()
+# cv2.imshow("predicted image", image)
+# # Load and hold the image
+# cv2.waitKey(0)
+# # To close the window press any key
+# cv2.destroyAllWindows()
