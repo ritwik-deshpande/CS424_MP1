@@ -1,8 +1,7 @@
 import collections
 
 from scheduling.misc import *
-from scheduling.TaskEntity import *
-import json
+
 from matplotlib import pyplot as plt
 
 history = read_json_file("scheduling_history.json")
@@ -47,8 +46,6 @@ def get_inversion_time():
                 blocking_time += obj[1]
 
         inversion_time.append(blocking_time)
-
-    # print(inversion_time)
 
     avg_inversion_time = sum(inversion_time)/len(inversion_time)
 
